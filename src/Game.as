@@ -11,8 +11,9 @@ package
 		public function Game() 
 		{	
 			add(new Player(20, 20));
-			
 			add(new Wall(20, 40));
+			add(new Wall(40, 40));
+			add(new Wall(60, 40));
 		}
 		
 	}
