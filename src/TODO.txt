@@ -8,3 +8,6 @@
 - make platforms generate
 - add scoring system based on time survived
 - add death and restart system
+
+
+Testing the fuck out of my branch yo.
