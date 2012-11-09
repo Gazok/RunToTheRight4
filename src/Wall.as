@@ -16,7 +16,7 @@ package
 			
 			setHitbox(2, 2);
 			
-			graphic = new Image(new BitmapData(2, 2, false, 0xFFFFFF));
+			graphic = new Image(new BitmapData(2, 2, false, 0x4E5159));
 		}
 		
 	}

@@ -7,6 +7,7 @@ package
 	import net.flashpunk.utils.Key;
 	import net.flashpunk.utils.Input;
 	import flash.geom.Point;
+	import net.flashpunk.graphics.Spritemap;
 
 	public class Player extends Entity 
 	{
@@ -17,12 +18,19 @@ package
 		public var jump:Number = 2;
 		public var maxspeed:Number = 1;
 		
+		[Embed(source = "../assets/graphics/characterSheet.png")] private const SPRITEYOU:Class;
+		public var spriteYou: Spritemap = new Spritemap(SPRITEYOU, 6, 9);
+		
 		public function Player(x:int, y:int) 
 		{
+			spriteYou.add("Run", [0, 1], 2, true);
+			spriteYou.play("Run");
+			spriteYou.originY = 1;
+			
 			this.x = x;
 			this.y = y;
 			
-			graphic = new Image(new BitmapData(6, 8, false, 0));
+			graphic = spriteYou;
 			
 			Input.define("left", Key.LEFT);
 			Input.define("right", Key.RIGHT);

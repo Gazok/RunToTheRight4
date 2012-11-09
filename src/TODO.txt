@@ -1,1 +1,10 @@
-- do stuff
+- add art
+	A basic character model has been made, with placeholder leg animations
+	Colours are being replaced by ones from the colour pallette I'm (Ben) using
+- make platforms move to the side
+	1) Move all instances of walls and the left (1 pixel?)
+	2) If there are no walls in the way, move the player back into his initial position
+	3) Delete walls which are too far off the edge
+- make platforms generate
+- add scoring system based on time survived
+- add death and restart system
