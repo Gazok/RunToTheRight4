@@ -14,7 +14,7 @@ package
 		override public function init():void 
 		{
 			FP.world = new Game;
-			//FP.console.enable();
+			FP.console.enable(); // console messes up when you scale screen in FP *shrugs*
 			
 			FP.screen.color = 0x909090;
 			FP.screen.scale = 10;

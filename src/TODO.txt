@@ -1,10 +1,33 @@
-- add art
-	A basic character model has been made, with placeholder leg animations
-	Colours are being replaced by ones from the colour pallette I'm (Ben) using
-- make platforms move to the side
-	1) Move all instances of walls and the left (1 pixel?)
-	2) If there are no walls in the way, move the player back into his initial position
-	3) Delete walls which are too far off the edge
-- make platforms generate
-- add scoring system based on time survived
-- add death and restart system
+not sure what theme/style we're going with , but it needs to be established
+so music/sfx/graphics/style is consistent if you get what I mean
+
+- name game
+- make title screen
+
+graphics
+--------
+	- A basic character model has been made, with placeholder leg animations
+	- Colours are being replaced by ones from the colour pallette I'm (Ben) using
+	- add scrolling background (at half wall speed)
+	- the character should probably bob his head; he looks like he's skating
+	
+gameplay
+--------
+	- add scoring system based on time survived
+	- add (nicer) death and restart system
+	- make walls randomly variable in:
+		- length
+		- gap between
+		- height
+	- make platforms begin by moving slowly and gradually speed up
+	- stop player from getting stuck in side of walls
+	- stop player from exiting left/right of screen
+	
+	- add some kind of novel mechanic so it isn't the same old boring canabalt rip-off
+
+audio
+-----
+	- add bg music
+	- add non-annoying jump sound effect
+
+	- add volume toggle button (also triggered by M key)?
