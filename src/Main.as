@@ -5,7 +5,6 @@ package
 
 	public class Main extends Engine
 	{
-		
 		public function Main()
 		{
 			super(80, 60);
@@ -19,7 +18,5 @@ package
 			FP.screen.color = 0x909090;
 			FP.screen.scale = 10;
 		}
-		
 	}
-	
 }
