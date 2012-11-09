@@ -1,8 +1,8 @@
 package  
 {
+	import flash.display.BitmapData;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
-	import flash.display.BitmapData;
 	
 	public class Wall extends Entity 
 	{

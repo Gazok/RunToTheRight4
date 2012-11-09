@@ -1,13 +1,11 @@
 package
 {
-	import net.flashpunk.Entity;
-	import flash.display.BitmapData;
-	import net.flashpunk.graphics.Image;
-	import net.flashpunk.FP;
-	import net.flashpunk.utils.Key;
-	import net.flashpunk.utils.Input;
 	import flash.geom.Point;
+	import net.flashpunk.Entity;
+	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Spritemap;
+	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 
 	public class Player extends Entity 
 	{
@@ -18,8 +16,7 @@ package
 		public var jump:Number = 2;
 		public var maxspeed:Number = 1;
 		
-		[Embed(source = "../assets/graphics/characterSheet.png")] private const SPRITEYOU:Class;
-		public var spriteYou: Spritemap = new Spritemap(SPRITEYOU, 6, 9);
+		public var spriteYou: Spritemap = new Spritemap(A.gfxPLAYER, 6, 9);
 		
 		public function Player(x:int, y:int) 
 		{
@@ -44,7 +41,7 @@ package
 			if (Input.check("left")) speed.x -= acceleration;
 			if (Input.check("right")) speed.x += acceleration;
 			
-			if (Input.check("jump") && collide("wall", x, y + 1)) speed.y = - jump;
+			if (Input.check("jump") && collide("wall", x, y + 1)) speed.y = -jump;
 			if (!Input.check("jump") && speed.y < 0) speed.y += gravity;
 			
 			speed.y += gravity;
@@ -75,8 +72,6 @@ package
 			}
 			
 			if (Math.abs(speed.x) > maxspeed) speed.x = FP.sign(speed.x) * maxspeed;
-			
-			//if (collide("finish", x, y)) Game.finished = true;
 		}
 		
 	}

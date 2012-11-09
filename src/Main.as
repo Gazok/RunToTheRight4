@@ -15,6 +15,7 @@ package
 		{
 			FP.world = new Game;
 			//FP.console.enable();
+			
 			FP.screen.color = 0x909090;
 			FP.screen.scale = 10;
 		}
