@@ -10,23 +10,23 @@ package
 	public class Player extends Entity 
 	{
 		public var speed:Point = new Point(0, 0);
-		public var acceleration:Number = 0.1;
-		public var friction:Number = 0.5;
+		public var acceleration:Number = 0.5;
+		public var friction:Number = 2;
 		public var gravity:Number = 0.2;
-		public var jump:Number = 2;
-		public var maxspeed:Number = 1;
+		public var jump:Number = 2.5;
+		public var maxspeed:Number = 0.5;
 		
 		public var spriteYou: Spritemap = new Spritemap(A.gfxPLAYER, 6, 9);
 		
 		public function Player(x:int, y:int) 
 		{
-			spriteYou.add("Run", [0, 1], 2, true);
-			spriteYou.play("Run");
+			spriteYou.add("run", [0, 1], 4, true);
+			spriteYou.play("run");
 			spriteYou.originY = 1;
 			
 			this.x = x;
 			this.y = y;
-			//dfvsakd
+			
 			graphic = spriteYou;
 			
 			Input.define("left", Key.LEFT);
@@ -41,19 +41,19 @@ package
 			if (Input.check("left")) speed.x -= acceleration;
 			if (Input.check("right")) speed.x += acceleration;
 			
-			if (Input.check("jump") && collide("wall", x, y + 1)) speed.y = -jump;
+			if (Input.pressed("jump") && collide(A.typWALL, x, y + 1)) speed.y = -jump;
 			if (!Input.check("jump") && speed.y < 0) speed.y += gravity;
 			
 			speed.y += gravity;
 			
 			for (var i:int = 0; i < Math.abs(speed.x); i ++)
 			{
-				if (!collide("wall", x + FP.sign(speed.x), y)) x += FP.sign(speed.x); 
+				if (!collide(A.typWALL, x + FP.sign(speed.x), y)) x += FP.sign(speed.x); 
 				else speed.x = 0; 
 			}
 			for (i = 0; i < Math.abs(speed.y); i ++)
 			{
-				if (!collide("wall", x, y + FP.sign(speed.y))) y += FP.sign(speed.y);
+				if (!collide(A.typWALL, x, y + FP.sign(speed.y))) y += FP.sign(speed.y);
 				else speed.y = 0;
 			}
 			
@@ -72,6 +72,8 @@ package
 			}
 			
 			if (Math.abs(speed.x) > maxspeed) speed.x = FP.sign(speed.x) * maxspeed;
+
+			if (y > FP.height * 2) FP.world = new Game;
 		}
 		
 	}

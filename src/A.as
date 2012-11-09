@@ -10,7 +10,7 @@ package
 		// [Embed(source = '../assets/audio/sound.mp3')] static public const sndSOUND:Class;
 
 		// collision types
-		// static public const typOBJECT:String = "object";
+		static public const typWALL:String = "wall";
 
 		// graphic layers
 		// static public const lyrDEPTH:int = depth;
