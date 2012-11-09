@@ -26,7 +26,7 @@ package
 			
 			this.x = x;
 			this.y = y;
-			
+			//dfvsakd
 			graphic = spriteYou;
 			
 			Input.define("left", Key.LEFT);
