@@ -11,7 +11,7 @@ package
 	{
 		private static const mustClick:Boolean = true;
 		private static const mainClassName:String = "Main";
-		private static const BG_COLOR:uint = 0x000000, FG_COLOR:uint = 0xFFFFFF;
+		private static const BG_COLOR:uint = 0x909090, FG_COLOR:uint = 0x4E5159;
 		[Embed(source = 'net/flashpunk/graphics/04B_03__.TTF', embedAsCFF="false", fontFamily = 'default')] private static const FONT:Class;
 		
 		private var pb:Shape, t:TextField, px:int, py:int, w:int, h:int = 20, sw:int, sh:int;

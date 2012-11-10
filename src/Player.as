@@ -29,9 +29,9 @@ package
 			
 			graphic = spriteYou;
 			
-			Input.define("left", Key.LEFT);
-			Input.define("right", Key.RIGHT);
-			Input.define("jump", Key.Z, Key.UP);
+			Input.define("left", Key.LEFT, Key.A);
+			Input.define("right", Key.RIGHT, Key.D);
+			Input.define("jump", Key.Z, Key.UP, Key.W);
 			
 			setHitbox(6, 8);
 		}

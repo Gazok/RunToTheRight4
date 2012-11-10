@@ -1,30 +1,31 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 not sure what theme/style we're going with , but it needs to be established
+=======
+not sure what theme/style we're going with, but it needs to be established
+>>>>>>> 81a0a6fbf2b43078d4ecd5dd9eadf4d913ed71e4
 so music/sfx/graphics/style is consistent if you get what I mean
 
 - name game
 - make title screen
+- explain controls to player
 
 graphics
 --------
 	- A basic character model has been made, with placeholder leg animations
 	- Colours are being replaced by ones from the colour pallette I'm (Ben) using
-	- add scrolling background (at half wall speed)
+	- add scrolling background (at half Game.speed)
 	- the character should probably bob his head; he looks like he's skating
 	
 gameplay
 --------
-	- add scoring system based on time survived
 	- add (nicer) death and restart system
-	- make walls randomly variable in:
-		- length
-		- gap between
-		- height
-	- make platforms begin by moving slowly and gradually speed up
 	- stop player from getting stuck in side of walls
 	- stop player from exiting left/right of screen
 	
-	- add some kind of novel mechanic so it isn't the same old boring canabalt rip-off
+	- add some kind of novel mechanic(s) so it isn't the same old boring canabalt rip-off:
+		- perhaps a super-jump (could be represented as swinging up and climbing rope) - ropes could be pick-up-able (start with 1, can hold max 3)
+		- some kind of randomly postioned fence on some walls which the player has to jump over
 
 audio
 -----
