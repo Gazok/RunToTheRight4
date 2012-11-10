@@ -7,6 +7,12 @@ package
 	
 	public class Wall extends Entity 
 	{
+		// controls characteristics of next wall
+		private var wallGap:int = FP.rand(21) + 10; // 10 - 30
+		private var wallLength:int = FP.rand(61) + 40; // 40 - 100
+		private var wallHeight:int = FP.rand(36) + 5; // 5 - 40
+		
+		private var created:Boolean = false;
 		
 		public function Wall(x:int, y:int, w:int, h:int) 
 		{
@@ -17,15 +23,18 @@ package
 			setHitbox(w, h);
 			
 			graphic = new Image(new BitmapData(w, h, false, 0x4E5159));
+			
+			Game.speed += 0.01;
 		}
 		
 		override public function update():void
 		{
-			x --;
+			x -= Game.speed;
 			
-			if (x + width == 60) // right side of wall
+			if (!created && x + width <= FP.width - wallGap) // right side of wall
 			{
-				FP.world.add(new Wall(FP.width, 40, 80, 20));
+				created = true;
+				FP.world.add(new Wall(FP.width, FP.height - wallHeight, wallLength, wallHeight));
 			}
 			
 			if (x < -width) FP.world.remove(this);
