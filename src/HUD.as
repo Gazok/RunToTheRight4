@@ -11,14 +11,17 @@ package
 		public function HUD() 
 		{
 			graphic = scoreText;
+			graphic.scrollX = 0; //camera scrolling xfactor = 0
+			graphic.scrollY = 0; //camera scrolling yfactor = 0
 		}
 		
 		override public function update():void
 		{
 			scoreText.text = String(Math.floor(Game.time * 100));
 			scoreText.x = FP.width - (scoreText.width - 1);
+
+			FP.world.bringToFront(this);
 		}
 		
 	}
-
 }
