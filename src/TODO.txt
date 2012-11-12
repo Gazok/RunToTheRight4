@@ -22,7 +22,6 @@ gameplay
 
 audio
 -----
-	- add bg music
 	- add non-annoying jump sound effect
 
 	- add volume toggle button (also triggered by M key)?
