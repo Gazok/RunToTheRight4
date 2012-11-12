@@ -9,7 +9,7 @@ graphics
 	- A basic character model has been made, with placeholder leg animations
 	- Colours are being replaced by ones from the colour pallette I'm (Ben) using
 	- add scrolling background (different graphical elements with varying
-	  graphic.scrollX
+	  graphic.scrollX)
 	- the character should probably bob his head; he looks like he's skating
 	
 gameplay
@@ -23,5 +23,4 @@ gameplay
 audio
 -----
 	- add non-annoying jump sound effect
-
 	- add volume toggle button (also triggered by M key)?

@@ -5,13 +5,15 @@ package
 	import net.flashpunk.FP;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.flashpunk.Sfx;
 	
 	public class Game extends World 
 	{
 		public static var time:Number;
 		
 		private var _walls:Array = new Array();
-		private var _player:Player
+		private var _player:Player;
+		private var _bgMusic:Sfx = new Sfx(A.sndBGMUSIC);
 
 		public function Game() 
 		{	
@@ -25,11 +27,16 @@ package
 			add(new HUD);
 
 			TrackPlayer();
+			_bgMusic.loop();
 		}
 		
 		override public function update():void
 		{
-			if (Input.pressed(Key.R)) FP.world = new Game;
+			if (Input.pressed(Key.R))
+			{ 
+				Restart();
+			}
+
 			time += FP.elapsed;
 
 			/* Wall management code. Could be better housed in Level.as or similar */
@@ -52,6 +59,17 @@ package
 			super.update();
 
 			TrackPlayer();
+
+			if(_player.y >= 2*FP.height)
+			{
+				Restart();
+			}
+		}
+
+		public function Restart():void
+		{
+			_bgMusic.stop();
+			FP.world = new Game(); // This is far from idea
 		}
 
 		private function RemoveNulls(a:Array):Array //Used to be/should be provided in FP

@@ -7,7 +7,7 @@ package
 		[Embed(source = '../assets/graphics/characterSheet.png')] static public const gfxPLAYER:Class;
 
 		// audio
-		// [Embed(source = '../assets/audio/sound.mp3')] static public const sndSOUND:Class;
+		[Embed(source = '../assets/sound/music.mp3')] static public const sndBGMUSIC:Class;
 
 		// collision types
 		static public const typWALL:String = "wall";

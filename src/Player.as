@@ -68,12 +68,12 @@ package
 			for (var i:int = 0; i < Math.abs(_vel.x); i ++)
 			{
 				if (!collide(A.typWALL, x + FP.sign(_vel.x), y)) x += FP.sign(_vel.x); 
-				else _vel.x = 0; 
+				else _vel.x -= Math.floor(_vel.x); //Prevent quantized velocities
 			}
 			for (i = 0; i < Math.abs(_vel.y); i ++)
 			{
 				if (!collide(A.typWALL, x, y + FP.sign(_vel.y))) y += FP.sign(_vel.y);
-				else _vel.y = 0;
+				else _vel.y -= Math.floor(_vel.y);
 			}
 			
 			/*if (!Input.check("left") && !Input.check("right"))
@@ -91,8 +91,6 @@ package
 			}*/
 			
 			//if (Math.abs(_vel.x) > maxspeed) _vel.x = FP.sign(_vel.x) * _maxspeed;
-
-			if (y > FP.height * 2) FP.world = new Game;
 		}
 		
 	}
