@@ -23,6 +23,7 @@ package
 		{
 			spr.add("run", [0, 1, 2, 3], 8, true);
 			spr.play("run");
+			spr.originX = 1;
 			spr.originY = 1;
 			
 			this.x = x;
@@ -63,8 +64,6 @@ package
 			_toMove.y += _vel.y;
 
 			//Move the player 1 pixel at a time
-			//Could better represent motion with one loop checking x and y vs i
-			//(Not a problem for small x/y)
 			for (var i:int = 0; i < Math.abs(_toMove.x); i ++)
 			{
 				if (!collide(A.typWALL, x + FP.sign(_toMove.x), y))
