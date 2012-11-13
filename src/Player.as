@@ -17,13 +17,13 @@ package
 		private const _jump:Number = -2.5;
 		//private var maxspeed:Number = 0.5;
 		
-		private var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 9);
+		private var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 10);
 		
 		public function Player(x:int, y:int) 
 		{
-			spr.add("run", [0, 1], 4, true);
+			spr.add("run", [0, 1, 2, 3], 8, true);
 			spr.play("run");
-			spr.originX = 1;
+			spr.originY = 1;
 			
 			this.x = x;
 			this.y = y;

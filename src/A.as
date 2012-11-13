@@ -5,6 +5,7 @@ package
 	{
 		// graphics
 		[Embed(source = '../assets/graphics/characterSheet.png')] static public const gfxPLAYER:Class;
+		[Embed(source = "../assets/graphics/explosionSheet.png")] static public const gfxEXPLOSION:Class;
 
 		// audio
 		[Embed(source = '../assets/sound/music.mp3')] static public const sndBGMUSIC:Class;
