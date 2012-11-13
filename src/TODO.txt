@@ -1,4 +1,6 @@
 not sure what theme/style we're going with, but it needs to be established so music/sfx/graphics/style is consistent if you get what I mean
+Going to try and give it an "action hero"-y feel, planning to add explosions which happen all the way on then left edge of the screen, to make it look like you're running away from explosions (naturally, without looking at them)
+Name and title screen stuff could (and should, I feel) be discussed on Wednesday, if someone makes a title menu with placeholder graphics, it will be easy to replace them after coming to a conclusion
 
 - name game: Run To The Right #4
 - make title screen
@@ -10,12 +12,12 @@ graphics
 	- Colours are being replaced by ones from the colour pallette I'm (Ben) using
 	- add scrolling background (different graphical elements with varying
 	  graphic.scrollX)
-	- the character should probably bob his head; he looks like he's skating
 	
 gameplay
 --------
 	- add (nicer) death and restart system
 	- base wall spawn position on possibility of jump from last wall
+	- Some jumps are impossible. Reccomend giving greater jumps, but making gaps between walls longer (width, not height)
 	- add some kind of novel mechanic(s) so it isn't the same old boring canabalt rip-off:
 		- perhaps a super-jump (could be represented as swinging up and climbing rope) - ropes could be pick-up-able (start with 1, can hold max 3)
 		- some kind of randomly postioned fence on some walls which the player has to jump over
