@@ -32,6 +32,14 @@ package
 		
 		override public function update():void
 		{
+			//Create explosions
+			if (Math.random()*10 > 8)
+			{
+				//add(new Explosion(0, Math.random()*45));
+				//Decomment the above to add explosions
+			}
+			
+			
 			if (Input.pressed(Key.R))
 			{ 
 				Restart();
