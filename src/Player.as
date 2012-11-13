@@ -16,22 +16,20 @@ package
 		private var _jump:Number = -2.5;
 		//private var maxspeed:Number = 0.5;
 		
-		private var spriteYou: Spritemap = new Spritemap(A.gfxPLAYER, 6, 9);
+		private var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 9);
 		
 		public function Player(x:int, y:int) 
 		{
-			spriteYou.add("run", [0, 1], 4, true);
-			spriteYou.play("run");
-			spriteYou.originX = 1;
+			spr.add("run", [0, 1], 4, true);
+			spr.play("run");
+			spr.originX = 1;
 			
 			this.x = x;
 			this.y = y;
 			
-			graphic = spriteYou;
+			graphic = spr;
 
 			_vel.x = 1;
-
-
 			
 			Input.define("left", Key.LEFT, Key.A);
 			Input.define("right", Key.RIGHT, Key.D);
@@ -55,7 +53,7 @@ package
 			{
 				_acc.y += -0.05;
 				FP.console.log("It happened");
-			}
+			} // the jumping now feels inconsistent @_@
 			
 
 			//Increase speed
@@ -67,7 +65,7 @@ package
 			//(Not a problem for small x/y)
 			for (var i:int = 0; i < Math.abs(_vel.x); i ++)
 			{
-				if (!collide(A.typWALL, x + FP.sign(_vel.x), y)) x += FP.sign(_vel.x); 
+				if (!collide(A.typWALL, x + FP.sign(_vel.x), y)) x += FP.sign(_vel.x); // the problem with this is that it makes the player speed up too suddenly... 
 				else _vel.x -= Math.floor(_vel.x); //Prevent quantized velocities
 			}
 			for (i = 0; i < Math.abs(_vel.y); i ++)

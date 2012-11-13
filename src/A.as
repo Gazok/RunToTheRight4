@@ -17,10 +17,6 @@ package
 
 		// fonts
 		// [Embed(source = '../assets/misc/font.ttf', fontName = 'fntFONT', embedAsCFF='false', fontFamily = 'default')] private const F1:Class;
-		
-		// levels
-		// [Embed(source = '../assets/levels/Level1.oel', mimeType = 'application/octet-stream')] static public const L1:Class;
-		// static public const LEVELS:Array = [L1];
 	}
 
 }

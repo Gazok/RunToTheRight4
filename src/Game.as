@@ -13,7 +13,7 @@ package
 		
 		private var _walls:Array = new Array();
 		private var _player:Player;
-		private var _bgMusic:Sfx = new Sfx(A.sndBGMUSIC);
+		public static var bgMusic:Sfx = new Sfx(A.sndBGMUSIC);
 
 		public function Game() 
 		{	
@@ -27,7 +27,7 @@ package
 			add(new HUD);
 
 			TrackPlayer();
-			_bgMusic.loop();
+			if (!bgMusic.playing) bgMusic.loop();
 		}
 		
 		override public function update():void
@@ -50,7 +50,7 @@ package
 					_walls[index] = undefined;
 				}
 			}
-			var lastWall:Wall = _walls[_walls.length - 1] //AS3 doesn't have an Array.last() function?
+			var lastWall:Wall = _walls[_walls.length - 1]; //AS3 doesn't have an Array.last() function?
 			if(lastWall.x + lastWall.width < FP.width + camera.x)
 			{
 				AddWall(lastWall);
@@ -68,8 +68,8 @@ package
 
 		public function Restart():void
 		{
-			_bgMusic.stop();
-			FP.world = new Game(); // This is far from idea
+			// bgMusic.stop(); // it doesn't make sense to restart the music and also restarting it sounds god-awful
+			FP.world = new Game(); // This is far from ideal // no one cares, it's just a little game
 		}
 
 		private function RemoveNulls(a:Array):Array //Used to be/should be provided in FP
@@ -97,8 +97,8 @@ package
 
 			if (wallHeight - lWallHeight < 0) {} //TODO make this work
 
-			var wallGap: int = FP.rand(21) + 10; //10-30
-			var wallWidth:int = FP.rand(61) + 40; // 40 - 100
+			var wallGap: int = FP.rand(21) + 10; // 10 - 30
+			var wallWidth:int = FP.rand(201) + 50; // 50 - 250
 			var x:int = FP.width + FP.camera.x + wallGap;
 			var y:int = FP.height + FP.camera.y - wallHeight;
 
