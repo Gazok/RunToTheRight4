@@ -68,7 +68,6 @@ package
 
 		public function Restart():void
 		{
-			// bgMusic.stop(); // it doesn't make sense to restart the music and also restarting it sounds god-awful
 			FP.world = new Game(); // This is far from ideal // no one cares, it's just a little game
 		}
 
@@ -116,5 +115,4 @@ package
 			FP.camera.x = _player.x + _cameraXOffset;
 		}
 	}
-
 }

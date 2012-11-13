@@ -9,11 +9,12 @@ package
 
 	public class Player extends Entity 
 	{
+		private var _toMove:Point = new Point(0, 0);
 		private var _vel:Point = new Point(0, 0);
 		private var _acc:Point = new Point(0.005, 0);
-		private var _friction:Number = 2;
-		private var _gravity:Number = 0.2;
-		private var _jump:Number = -2.5;
+		private const _friction:Number = 2;
+		private const _gravity:Number = 0.2;
+		private const _jump:Number = -2.5;
 		//private var maxspeed:Number = 0.5;
 		
 		private var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 9);
@@ -51,28 +52,46 @@ package
 			}
 			else if (Input.check("jump") && _vel.y < 0)
 			{
-				_acc.y += -0.05;
-				FP.console.log("It happened");
-			} // the jumping now feels inconsistent @_@
+				_acc.y += -_gravity*0.5; //A bit generous
+			}
 			
-
 			//Increase speed
 			_vel.x += _acc.x;
 			_vel.y += _acc.y;
 
+			_toMove.x += _vel.x;
+			_toMove.y += _vel.y;
+
 			//Move the player 1 pixel at a time
 			//Could better represent motion with one loop checking x and y vs i
 			//(Not a problem for small x/y)
-			for (var i:int = 0; i < Math.abs(_vel.x); i ++)
+			for (var i:int = 0; i < Math.abs(_toMove.x); i ++)
 			{
-				if (!collide(A.typWALL, x + FP.sign(_vel.x), y)) x += FP.sign(_vel.x); // the problem with this is that it makes the player speed up too suddenly... 
-				else _vel.x -= Math.floor(_vel.x); //Prevent quantized velocities
+				if (!collide(A.typWALL, x + FP.sign(_toMove.x), y))
+				{
+					x += FP.sign(_toMove.x);
+				}
+				else 
+				{
+					_vel.x = 0;
+				}
 			}
-			for (i = 0; i < Math.abs(_vel.y); i ++)
+
+			for (i = 0; i < Math.abs(_toMove.y); i ++)
 			{
-				if (!collide(A.typWALL, x, y + FP.sign(_vel.y))) y += FP.sign(_vel.y);
-				else _vel.y -= Math.floor(_vel.y);
+				if (!collide(A.typWALL, x, y + FP.sign(_toMove.y))) 
+				{
+					y += FP.sign(_toMove.y);
+				}
+				else
+				{
+					_vel.y = 0;
+				}
 			}
+
+			//Prevent quantized velocities
+			_toMove.x -= Math.floor(_toMove.x);
+			_toMove.y -= Math.floor(_toMove.y);
 			
 			/*if (!Input.check("left") && !Input.check("right"))
 			{
