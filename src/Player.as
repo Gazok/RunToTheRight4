@@ -25,6 +25,7 @@ package
 			spr.play("run");
 			spr.originX = 1;
 			spr.originY = 1;
+			spr.originX = 1;
 			
 			this.x = x;
 			this.y = y;
