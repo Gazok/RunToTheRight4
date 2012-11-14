@@ -7,13 +7,16 @@ package
 
 	public class HUD extends Entity 
 	{
+		public static var ft:Array = [];
+		private var t:int = 0;
+		
 		private var scoreText:Text = new Text("", 0, -1, { size: 8, color: 0xE6E4D5 } );
 		private var scoreTextList:Graphiclist = new Graphiclist;
 		
-		private var startText:Array = [new Text("RUN TO THE", 17, 6, { size: 8, color: 0xE6E4D5 } ), new Text("RIGHT #4", 17, 15, { size: 8, color: 0xE6E4D5 } ), new Text("PRESS SPACE", 17, 45, { size: 8, color: 0xE6E4D5 } )];
+		private var startText:Array = [new Text("RUN TO THE", 17, 6, { size: 8, color: 0xE6E4D5 } ), new Text("RIGHT #4", 17, 15, { size: 8, color: 0xE6E4D5 } ), ft[0] = new Text("PRESS SPACE", 17, 45, { size: 8, color: 0xE6E4D5 } )];
 		private var startTextList:Graphiclist = new Graphiclist;
 		
-		public static var deadText:Array = [new Text("", 0, 4, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("", 0, 16, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("", 0, 25, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("TO THE RIGHT", 0, 34, { size: 8, color: 0xE6E4D5 } ), new Text("PRESS SPACE", 0, 47, { size: 8, color: 0xE6E4D5 } )];
+		public static var deadText:Array = [new Text("", 0, 4, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("", 0, 16, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("", 0, 25, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("TO THE RIGHT", 0, 34, { size: 8, color: 0xE6E4D5 } ), ft[1] = new Text("PRESS SPACE", 0, 47, { size: 8, color: 0xE6E4D5 } )];
 		public static var deadTextList:Graphiclist = new Graphiclist;
 		
 		public static var score:int = 0;
@@ -32,22 +35,39 @@ package
 			// populate graphiclist with text shadows
 			for (i = 0; i < startText.length; i ++)
 			{
-				startTextList.add(new Text(startText[i].text, startText[i].x - 1, startText[i].y, { size: startText[i].size, color: 0 } ));
-				startTextList.add(new Text(startText[i].text, startText[i].x + 1, startText[i].y, { size: startText[i].size, color: 0 } ));
-				startTextList.add(new Text(startText[i].text, startText[i].x, startText[i].y - 1, { size: startText[i].size, color: 0 } ));
-				startTextList.add(new Text(startText[i].text, startText[i].x, startText[i].y + 1, { size: startText[i].size, color: 0 } ));
+				startTextList.add(ft[2] = new Text(startText[i].text, startText[i].x - 1, startText[i].y, { size: startText[i].size, color: 0 } ));
+				startTextList.add(ft[3] = new Text(startText[i].text, startText[i].x + 1, startText[i].y, { size: startText[i].size, color: 0 } ));
+				startTextList.add(ft[4] = new Text(startText[i].text, startText[i].x, startText[i].y - 1, { size: startText[i].size, color: 0 } ));
+				startTextList.add(ft[5] = new Text(startText[i].text, startText[i].x, startText[i].y + 1, { size: startText[i].size, color: 0 } ));
 			}
 			
 			// re-populate graphiclist with text
 			for (i = 0; i < startText.length; i ++) startTextList.add(startText[i]);
 			
 			// camera scrolling factors
-			scoreTextList.scrollX = deadTextList.scrollX = 0;
-			scoreTextList.scrollY = deadTextList.scrollY = 0;
+			scoreTextList.scrollX = deadTextList.scrollX = scoreTextList.scrollY = deadTextList.scrollY = 0;
 		}
 		
 		override public function update():void
 		{
+			// flashing text
+			if (!Game.started || Game.dead)
+			{
+				t ++;
+				if (t > 20)
+				{
+					if (ft[0].alpha == 1)
+					{
+						for (var i:int = 0; i < ft.length; i ++) ft[i].alpha = 0;
+					}
+					else
+					{
+						for (i = 0; i < ft.length; i ++) ft[i].alpha = 1;
+					}
+					t = 0;
+				}
+			}
+			
 			graphic = (Game.dead) ? deadTextList : ((Game.started) ? scoreTextList : startTextList);
 			
 			score = Math.floor(Game.score);
@@ -96,10 +116,10 @@ package
 			// populate graphiclist with text shadows
 			for (i = 0; i < deadText.length; i ++)
 			{
-				deadTextList.add(new Text(deadText[i].text, deadText[i].x - 1, deadText[i].y, { size: deadText[i].size, color: 0 } ));
-				deadTextList.add(new Text(deadText[i].text, deadText[i].x + 1, deadText[i].y, { size: deadText[i].size, color: 0 } ));
-				deadTextList.add(new Text(deadText[i].text, deadText[i].x, deadText[i].y - 1, { size: deadText[i].size, color: 0 } ));
-				deadTextList.add(new Text(deadText[i].text, deadText[i].x, deadText[i].y + 1, { size: deadText[i].size, color: 0 } ));
+				deadTextList.add(ft[6] = new Text(deadText[i].text, deadText[i].x - 1, deadText[i].y, { size: deadText[i].size, color: 0 } ));
+				deadTextList.add(ft[7] = new Text(deadText[i].text, deadText[i].x + 1, deadText[i].y, { size: deadText[i].size, color: 0 } ));
+				deadTextList.add(ft[8] = new Text(deadText[i].text, deadText[i].x, deadText[i].y - 1, { size: deadText[i].size, color: 0 } ));
+				deadTextList.add(ft[9] = new Text(deadText[i].text, deadText[i].x, deadText[i].y + 1, { size: deadText[i].size, color: 0 } ));
 			}
 			
 			// re-populate graphiclist with text
