@@ -49,12 +49,14 @@ package
 			else
 			{
 				//Create explosions
-				if (Math.random()*100 > 85)
+				if (Math.random()*100 > 85 && !Game.dead)
 				{
 					add(new Explosion(0, Math.random()*45));
-					//Decomment the above to add explosions
 				}
-				
+				if (Math.random()*100 > 50 && Game.dead)
+				{
+					add(new Explosion(Math.random()*75, Math.random()*45));
+				}
 				
 				if (Input.pressed(Key.R))
 				{ 
