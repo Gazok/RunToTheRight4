@@ -13,8 +13,10 @@ package
 		private var startText:Array = [new Text("RUN TO THE", 17, 6, { size: 8, color: 0xE6E4D5 } ), new Text("RIGHT #4", 17, 15, { size: 8, color: 0xE6E4D5 } ), new Text("PRESS SPACE", 17, 45, { size: 8, color: 0xE6E4D5 } )];
 		private var startTextList:Graphiclist = new Graphiclist;
 		
-		public static var deadText:Array = [new Text("", 0, 4, { size: 8, color: 0xE6E4D5 } ), new Text("", 0, 16, { size: 8, color: 0xE6E4D5 } ), new Text("", 0, 25, { size: 8, color: 0xE6E4D5 } ), new Text("", 0, 34, { size: 8, color: 0xE6E4D5 } ), new Text("PRESS SPACE", 0, 47, { size: 8, color: 0xE6E4D5 } )];
+		public static var deadText:Array = [new Text("", 0, 4, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("", 0, 16, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("", 0, 25, { size: 8, color: 0xE6E4D5, resizable: true } ), new Text("TO THE RIGHT", 0, 34, { size: 8, color: 0xE6E4D5 } ), new Text("PRESS SPACE", 0, 47, { size: 8, color: 0xE6E4D5 } )];
 		public static var deadTextList:Graphiclist = new Graphiclist;
+		
+		public static var score:int = 0;
 		
 		public function HUD() 
 		{
@@ -48,7 +50,8 @@ package
 		{
 			graphic = (Game.dead) ? deadTextList : ((Game.started) ? scoreTextList : startTextList);
 			
-			scoreText.text = String(Math.floor(Game.score)) + "m";
+			score = Math.floor(Game.score);
+			scoreText.text = String(score) + "m";
 			
 			// populate graphiclist with text
 			scoreTextList.add(scoreText);
@@ -74,10 +77,9 @@ package
 		public static function die():void
 		{
 			// decide death text
-			deadText[0].text = "YOU RAN " + String(Math.floor(Game.score)) + "m";
-			deadText[1].text = "YOU'RE REALLY";
-			deadText[2].text = "GOOD AT RUNNING"; // TODO: make message dependent upon score
-			deadText[3].text = "TO THE RIGHT";
+			deadText[0].text = "YOU RAN " + String(score) + "m";
+			deadText[1].text = (score < 1000) ? "YOU SUCK" : ((score < 3000) ? "YOU'RE PRETTY" : ((score < 5000) ? "YOU'RE REALLY" : "YOU'RE AMAZING"));
+			deadText[2].text = (score < 1000 || score >= 5000) ? "AT RUNNING" : "GOOD AT RUNNING";
 			
 			// populate graphiclist with text
 			for (i = 0; i < deadText.length; i ++) deadTextList.add(deadText[i]);
