@@ -1,6 +1,8 @@
 package  
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.Graphic;
+	import net.flashpunk.graphics.Image;
 	import net.flashpunk.World;
 	import net.flashpunk.FP;
 	import net.flashpunk.utils.Input;
@@ -19,11 +21,14 @@ package
 
 		private var _walls:Array = new Array();
 		private var _player:Player;
+		private var _background:Entity;
 
 		public function Game() 
 		{	
 			score = 0;
 			dead = false;
+			
+			_background = addGraphic(new Image(A.gfxBACKGROUND));
 
 			_player = new Player(14, 31);
 			_walls.push(new Wall(-8, 40, 176, 20));
@@ -99,6 +104,7 @@ package
 				
 				if (dead && Input.pressed(Key.SPACE)) Restart();
 			}
+			_background.x = FP.camera.x;
 		}
 
 		public function Restart():void
@@ -187,5 +193,6 @@ package
 			var _cameraXOffset:int = -4;
 			FP.camera.x = _player.x + _cameraXOffset -10;
 		}
+
 	}
 }
