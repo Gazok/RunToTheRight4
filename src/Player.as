@@ -17,7 +17,7 @@ package
 		private const _ease:Number = -0.5*Game.gravity;
 		//private var maxspeed:Number = 0.5;
 		
-		private var jump:Sfx = new Sfx(A.sndJUMP);
+		private var jumpSFX:Sfx = new Sfx(A.sndJUMP);
 		
 		public var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 10);
 
@@ -34,8 +34,7 @@ package
 
 		public function VelXAfterDistance(dist:int):Number
 		{
-			var v1:Number = Math.sqrt(Math.pow(_vel.x,2)+2*_acc.x*dist);
-			return v1;
+			return Math.sqrt(Math.pow(_vel.x,2)+2*_acc.x*dist);
 		}
 
 		public function Player(x:int, y:int) 
@@ -68,7 +67,7 @@ package
 			if (Input.pressed("jump") && collide(A.typWALL, x, y + 1))
 			{
 				_acc.y += _jump;
-				jump.play();
+				jumpSFX.play();
 			}
 			else if (Input.check("jump"))// && _vel.y < 0)
 			{
