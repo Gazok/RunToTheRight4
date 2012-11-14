@@ -49,9 +49,9 @@ package
 			else
 			{
 				//Create explosions
-				if (Math.random()*10 > 8)
+				if (Math.random()*100 > 85)
 				{
-					//add(new Explosion(0, Math.random()*45));
+					add(new Explosion(0, Math.random()*45));
 					//Decomment the above to add explosions
 				}
 				
@@ -138,7 +138,7 @@ package
 		{
 			//Could make this track y slightly with high jumps
 			var _cameraXOffset:int = -4;
-			FP.camera.x = _player.x + _cameraXOffset;
+			FP.camera.x = _player.x + _cameraXOffset -10;
 		}
 	}
 }
