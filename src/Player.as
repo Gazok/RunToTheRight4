@@ -17,7 +17,7 @@ package
 		private const _ease:Number = -0.5*Game.gravity;
 		//private var maxspeed:Number = 0.5;
 		
-		private var jump:Sfx = new Sfx(A.sndJUMP);
+		private var jumpSnd:Sfx = new Sfx(A.sndJUMP);
 		
 		public var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 10);
 
@@ -68,7 +68,7 @@ package
 			if (Input.pressed("jump") && collide(A.typWALL, x, y + 1))
 			{
 				_acc.y += _jump;
-				jump.play();
+				jumpSnd.play();
 			}
 			else if (Input.check("jump"))// && _vel.y < 0)
 			{

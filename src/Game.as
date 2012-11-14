@@ -25,7 +25,7 @@ package
 			score = 0;
 			dead = false;
 
-			_player = new Player(4, 31);
+			_player = new Player(14, 31);
 			_walls.push(new Wall(-8, 40, 176, 20));
 
 			add(_player);
@@ -94,6 +94,7 @@ package
 				{
 					_player.vel.x = 0;
 					dead = true;
+					HUD.die();
 				}
 				
 				if (dead && Input.pressed(Key.SPACE)) Restart();
