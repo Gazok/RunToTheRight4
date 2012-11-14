@@ -12,6 +12,7 @@ package
 
 		// audio
 		[Embed(source = '../assets/sound/music.mp3')] static public const sndBGMUSIC:Class;
+		[Embed(source = '../assets/sound/jump.mp3')] static public const sndJUMP:Class;
 
 		// collision types
 		static public const typWALL:String = "wall";

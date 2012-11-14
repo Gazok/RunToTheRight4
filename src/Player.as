@@ -6,6 +6,7 @@ package
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.flashpunk.Sfx;
 
 	public class Player extends Entity 
 	{
@@ -16,6 +17,8 @@ package
 		private const _gravity:Number = 0.2;
 		private const _jump:Number = -2.5;
 		//private var maxspeed:Number = 0.5;
+		
+		private var jump:Sfx = new Sfx(A.sndJUMP);
 		
 		public var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 10);
 		
@@ -50,6 +53,7 @@ package
 			if (Input.pressed("jump") && collide(A.typWALL, x, y + 1))
 			{
 				_acc.y += _jump;
+				jump.play();
 			}
 			else if (Input.check("jump") && _vel.y < 0)
 			{
