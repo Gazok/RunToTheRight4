@@ -132,6 +132,7 @@ package
 		{
 			//Last wall information
 			var lWallX:int = lastWall.x;
+			var lWallY:int = lastWall.y;
 			var lWallHeight:int = lastWall.height;
 			var lWallWidth:int = lastWall.width;
 			
@@ -141,31 +142,33 @@ package
 			//New wall information
 			var wallHeight:int = FP.rand(36) + 5; // 5 - 40
 			var wallGap:int = FP.rand(31) + 15; // 15 - 45
-			var wallX:int = FP.width + FP.camera.x + wallGap;
+			var wallX:int = lWallX + lWallWidth + wallGap;
 			var wallY:int = FP.height + FP.camera.y - wallHeight;
 
-			//Get player information
+			/*//Get player information
 			const playerX:int = _player.x;
 			const playerY:int = _player.y;
 			const playerWidth:int = _player.width;
 			const playerHeight:int = _player.height;
 			const distX:int = lWallX - playerX;
-			const uX:Number = _player.VelXAfterDistance(distX);
+			const uX:Number = _player.VelXAfterDistance(distX);*/
 			const uY:Number = Game.gravity - _player.jump;
-			const aX:Number = _player.acc.x;
+			//const aX:Number = _player.acc.x;
 			const aY:Number = Game.gravity - _player.ease;
 
-			const playerDistToWall:Number = wallGap - playerWidth;
+			const maxY:Number = Math.pow(uY,2)/(2*aY);
+			const yDiff:Number = wallY - lWallY;
+
+			//const playerDistToWall:Number = wallGap - playerWidth;
 
 			//Simple mechanics rendered nasty.
-			const t:Number = 2*playerDistToWall/(Math.sqrt(Math.pow(uX,2)+2*aX*(playerDistToWall)) + uX);
+			//const t:Number = 2*playerDistToWall/(Math.sqrt(Math.pow(uX,2)+2*aX*playerDistToWall) + uX);
 
-			const nY:Number = uY*t+0.5*(aY*Math.pow(t,2));
+			//const nY:Number = uY*t+0.5*(aY*Math.pow(t,2));
 
-			if (nY - playerHeight < wallY)
+			if (yDiff > maxY)
 			{
 				newWall = GenerateWall(lastWall);
-				FP.console.log("Wall Rejected: " + (String)(wallY - nY));
 			}
 			else
 			{

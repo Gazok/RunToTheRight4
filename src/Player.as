@@ -34,8 +34,7 @@ package
 
 		public function VelXAfterDistance(dist:int):Number
 		{
-			var v1:Number = Math.sqrt(Math.pow(_vel.x,2)+2*_acc.x*dist);
-			return v1;
+			return Math.sqrt(Math.pow(_vel.x,2)+2*_acc.x*dist);
 		}
 
 		public function Player(x:int, y:int) 
