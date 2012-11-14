@@ -21,7 +21,7 @@ package
 		public function HUD() 
 		{
 			// populate graphiclist with text
-			for (i = 0; i < startText.length; i ++) startTextList.add(startText[i]);
+			for (var i:int = 0; i < startText.length; i ++) startTextList.add(startText[i]);
 			
 			// center start text
 			for (i = 0; i < startText.length; i ++) startText[i].x = (FP.width - startText[i].width) / 2;
@@ -30,7 +30,7 @@ package
 			startTextList.removeAll();
 			
 			// populate graphiclist with text shadows
-			for (var i:int = 0; i < startText.length; i ++)
+			for (i = 0; i < startText.length; i ++)
 			{
 				startTextList.add(new Text(startText[i].text, startText[i].x - 1, startText[i].y, { size: startText[i].size, color: 0 } ));
 				startTextList.add(new Text(startText[i].text, startText[i].x + 1, startText[i].y, { size: startText[i].size, color: 0 } ));
@@ -56,7 +56,7 @@ package
 			// populate graphiclist with text
 			scoreTextList.add(scoreText);
 			
-			// center start text
+			// centre start text
 			scoreText.x = FP.width - (scoreText.width - 1);
 			
 			// empty graphiclist
@@ -76,6 +76,9 @@ package
 		
 		public static function die():void
 		{
+			// reset death text widths to stop centring messing up
+			for (var i:int = 0; i < 3; i ++) deadText[i].width = 0;
+			
 			// decide death text
 			deadText[0].text = "YOU RAN " + String(score) + "m";
 			deadText[1].text = (score < 1000) ? "YOU SUCK" : ((score < 3000) ? "YOU'RE PRETTY" : ((score < 5000) ? "YOU'RE REALLY" : "YOU'RE AMAZING"));
@@ -84,14 +87,14 @@ package
 			// populate graphiclist with text
 			for (i = 0; i < deadText.length; i ++) deadTextList.add(deadText[i]);
 			
-			// center start text
+			// centre start text
 			for (i = 0; i < deadText.length; i ++) deadText[i].x = (FP.width - deadText[i].width) / 2;
 			
 			// empty graphiclist
 			deadTextList.removeAll();
 			
 			// populate graphiclist with text shadows
-			for (var i:int = 0; i < deadText.length; i ++)
+			for (i = 0; i < deadText.length; i ++)
 			{
 				deadTextList.add(new Text(deadText[i].text, deadText[i].x - 1, deadText[i].y, { size: deadText[i].size, color: 0 } ));
 				deadTextList.add(new Text(deadText[i].text, deadText[i].x + 1, deadText[i].y, { size: deadText[i].size, color: 0 } ));

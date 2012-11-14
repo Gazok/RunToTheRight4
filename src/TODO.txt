@@ -12,13 +12,12 @@ misc
 graphics
 --------
 	- Ben: add scrolling background (different graphical elements with varying graphic.scrollX)
-	- Ben: make a little fern sprite
+	- Ben: make a little fern sprite, unless Jamie wants to
 	- maybe add dirt particles behind the player
 	
 gameplay
 --------
-	- Jack: add shadow (note to self: experiment with shadow alpha) to title screen and HUD text
-	- Jack: generally make title/death screen look neater (make "press space" message flash)
+	- Jack: make "press space" message flash on start/death screens
 	- Jack: devise and implement some gameplay element with aliens
 	- Jamie: add ferns which slightly slow down the player
 
