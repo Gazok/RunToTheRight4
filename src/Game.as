@@ -52,10 +52,13 @@ package
 			else
 			{
 				//Create explosions
-				if (Math.random()*10 > 8)
+				if (Math.random()*100 > 85 && !Game.dead)
 				{
-					//add(new Explosion(0, Math.random()*45));
-					//Decomment the above to add explosions
+					add(new Explosion(0, Math.random()*45));
+				}
+				if (Math.random()*100 > 50 && Game.dead)
+				{
+					add(new Explosion(Math.random()*75, Math.random()*45));
 				}
 				
 				if (Input.pressed(Key.R))
@@ -178,7 +181,7 @@ package
 		{
 			//Could make this track y slightly with high jumps
 			var _cameraXOffset:int = -4;
-			FP.camera.x = _player.x + _cameraXOffset;
+			FP.camera.x = _player.x + _cameraXOffset -10;
 		}
 	}
 }

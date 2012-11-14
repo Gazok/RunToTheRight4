@@ -2,13 +2,11 @@ not sure what theme/style we're going with, but it needs to be established so mu
 Going to try and give it an "action hero"-y feel, planning to add explosions which happen all the way on then left edge of the screen, to make it look like you're running away from explosions (naturally, without looking at them)
 Name and title screen stuff could (and should, I feel) be discussed on Wednesday, if someone makes a title menu with placeholder graphics, it will be easy to replace them after coming to a conclusion
 
-- name game: Run To The Right #4
 - make title screen nicer
 - explain controls to player: Space to jump
 
+- make preloader automatically go to start screen on finish loading
 - hide debug console when finished
-
-I (Jack) was planning to just have the preloader go straight to the start screen rather than have the user click to start (it's just for the sake of preloading the assets without a blank screen when playing on the web)
 
 graphics
 --------
