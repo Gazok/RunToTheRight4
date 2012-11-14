@@ -10,19 +10,18 @@ package
 	public class Player extends Entity 
 	{
 		private var _toMove:Point = new Point(0, 0);
-		private var _vel:Point = new Point(0, 0);
+		public var _vel:Point = new Point(0, 0);
 		private var _acc:Point = new Point(0.005, 0);
 		private const _friction:Number = 2;
 		private const _gravity:Number = 0.2;
 		private const _jump:Number = -2.5;
 		//private var maxspeed:Number = 0.5;
 		
-		private var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 10);
+		public var spr:Spritemap = new Spritemap(A.gfxPLAYER, 6, 10);
 		
 		public function Player(x:int, y:int) 
 		{
 			spr.add("run", [0, 1, 2, 3], 8, true);
-			spr.play("run");
 			spr.originX = 1;
 			spr.originY = 1;
 			spr.originX = 1;
@@ -58,22 +57,25 @@ package
 			}
 			
 			//Increase speed
-			_vel.x += _acc.x;
+			if (Game.started) _vel.x += _acc.x;
 			_vel.y += _acc.y;
 
-			_toMove.x += _vel.x;
+			if (Game.started) _toMove.x += _vel.x;
 			_toMove.y += _vel.y;
 
-			//Move the player 1 pixel at a time
-			for (var i:int = 0; i < Math.abs(_toMove.x); i ++)
+			if (Game.started && !Game.dead)
 			{
-				if (!collide(A.typWALL, x + FP.sign(_toMove.x), y))
+				//Move the player 1 pixel at a time
+				for (var i:int = 0; i < Math.abs(_toMove.x); i ++)
 				{
-					x += FP.sign(_toMove.x);
-				}
-				else 
-				{
-					_vel.x = 0;
+					if (!collide(A.typWALL, x + FP.sign(_toMove.x), y))
+					{
+						x += FP.sign(_toMove.x);
+					}
+					else 
+					{
+						_vel.x = 0;
+					}
 				}
 			}
 
@@ -92,22 +94,6 @@ package
 			//Prevent quantized velocities
 			_toMove.x -= Math.floor(_toMove.x);
 			_toMove.y -= Math.floor(_toMove.y);
-			
-			/*if (!Input.check("left") && !Input.check("right"))
-			{
-				if (_vel.x > 0) 
-				{ 
-					_vel.x -= _friction;
-					if (_vel.x < 0) _vel.x = 0;
-				}
-				if (_vel.x < 0) 
-				{
-					_vel.x += _friction;
-					if (_vel.x > 0) _vel.x = 0;
-				}
-			}*/
-			
-			//if (Math.abs(_vel.x) > maxspeed) _vel.x = FP.sign(_vel.x) * _maxspeed;
 		}
 		
 	}

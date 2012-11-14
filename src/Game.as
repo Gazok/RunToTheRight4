@@ -10,17 +10,20 @@ package
 	public class Game extends World 
 	{
 		public static var time:Number;
+		public static var started:Boolean = false; // only show start screen before first run
+		public static var dead:Boolean;
+		public static var bgMusic:Sfx = new Sfx(A.sndBGMUSIC);
 		
 		private var _walls:Array = new Array();
 		private var _player:Player;
-		public static var bgMusic:Sfx = new Sfx(A.sndBGMUSIC);
 
 		public function Game() 
 		{	
 			time = 0;
+			dead = false;
 
-			_player = new Player(30, 4);
-			_walls.push(new Wall(20,40,80,20));
+			_player = new Player(4, 31);
+			_walls.push(new Wall(-8, 40, 176, 20));
 
 			add(_player);
 			add(_walls[0]);
@@ -28,49 +31,64 @@ package
 
 			TrackPlayer();
 			if (!bgMusic.playing) bgMusic.loop();
+			if (started) _player.spr.play("run");
 		}
 		
 		override public function update():void
 		{
-			//Create explosions
-			if (Math.random()*10 > 8)
-			{
-				//add(new Explosion(0, Math.random()*45));
-				//Decomment the above to add explosions
-			}
+			super.update();
 			
-			
-			if (Input.pressed(Key.R))
-			{ 
-				Restart();
-			}
-
-			time += FP.elapsed;
-
-			/* Wall management code. Could be better housed in Level.as or similar */
-			_walls = RemoveNulls(_walls); //Remove any garbage-collected elements
-			//Check wall positions and add/remove _walls as appropriate
-			for (var index:String in _walls)
+			if (!started)
 			{
-				if(_walls[index].x < 0 + FP.camera.x - _walls[index].width)
+				if (Input.pressed(Key.SPACE))
 				{
-					remove(_walls[index]);
-					_walls[index] = undefined;
+					started = true;
+					_player.spr.play("run");
 				}
 			}
-			var lastWall:Wall = _walls[_walls.length - 1]; //AS3 doesn't have an Array.last() function?
-			if(lastWall.x + lastWall.width < FP.width + camera.x)
+			else
 			{
-				AddWall(lastWall);
-			}
-			
-			super.update();
+				//Create explosions
+				if (Math.random()*10 > 8)
+				{
+					//add(new Explosion(0, Math.random()*45));
+					//Decomment the above to add explosions
+				}
+				
+				
+				if (Input.pressed(Key.R))
+				{ 
+					Restart();
+				}
 
-			TrackPlayer();
+				if (!dead) time += FP.elapsed;
 
-			if(_player.y >= 2*FP.height)
-			{
-				Restart();
+				/* Wall management code. Could be better housed in Level.as or similar */
+				_walls = RemoveNulls(_walls); //Remove any garbage-collected elements
+				//Check wall positions and add/remove _walls as appropriate
+				for (var index:String in _walls)
+				{
+					if(_walls[index].x < 0 + FP.camera.x - _walls[index].width)
+					{
+						remove(_walls[index]);
+						_walls[index] = undefined;
+					}
+				}
+				var lastWall:Wall = _walls[_walls.length - 1]; //AS3 doesn't have an Array.last() function?
+				if(lastWall.x + lastWall.width < FP.width + camera.x)
+				{
+					AddWall(lastWall);
+				}
+
+				TrackPlayer();
+
+				if(_player.y >= FP.height)
+				{
+					_player._vel.x = 0;
+					dead = true;
+				}
+				
+				if (dead && Input.pressed(Key.SPACE)) Restart();
 			}
 		}
 
@@ -104,7 +122,7 @@ package
 
 			if (wallHeight - lWallHeight < 0) {} //TODO make this work
 
-			var wallGap: int = FP.rand(21) + 10; // 10 - 30
+			var wallGap:int = FP.rand(31) + 15; // 15 - 45
 			var wallWidth:int = FP.rand(201) + 50; // 50 - 250
 			var x:int = FP.width + FP.camera.x + wallGap;
 			var y:int = FP.height + FP.camera.y - wallHeight;

@@ -12,11 +12,11 @@ package
 		private static const leftBitmap:BitmapData = new A.gfxWALLLEFT().bitmapData; //Unnnngggh
 		private static const rightBitmap:BitmapData = new A.gfxWALLRIGHT().bitmapData; //Unnnngggh
 		private static const centreBitmap:BitmapData = new A.gfxWALLMIDDLE().bitmapData; //Unnnngggh
+		
 		public function Wall(x:int, y:int, w:int, h:int) 
 		{
 			this.x = x;
 			this.y = y;
-
 
 			type = A.typWALL;
 			setHitbox(w, h);

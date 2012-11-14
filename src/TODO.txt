@@ -3,26 +3,32 @@ Going to try and give it an "action hero"-y feel, planning to add explosions whi
 Name and title screen stuff could (and should, I feel) be discussed on Wednesday, if someone makes a title menu with placeholder graphics, it will be easy to replace them after coming to a conclusion
 
 - name game: Run To The Right #4
-- make title screen
+- make title screen nicer
 - explain controls to player: Space to jump
+
+- hide debug console when finished
+
+I (Jack) was planning to just have the preloader go straight to the start screen rather than have the user click to start (it's just for the sake of preloading the assets without a blank screen when playing on the web)
 
 graphics
 --------
-	- A basic character model has been made, with placeholder leg animations
-	- Colours are being replaced by ones from the colour pallette I'm (Ben) using
-	- add scrolling background (different graphical elements with varying
-	  graphic.scrollX)
+	- colours are being replaced by ones from the colour pallette I'm (Ben) using
+	- add scrolling background (different graphical elements with varying graphic.scrollX)
+	- add functioning explosions (dunno if Jamie or Ben should code this)
 	
 gameplay
 --------
+	- seems like it's a little too fast-paced too quickly?
 	- add (nicer) death and restart system
 	- base wall spawn position on possibility of jump from last wall
-	- Some jumps are impossible. Reccomend giving greater jumps, but making gaps between walls longer (width, not height)
+	- Some jumps are impossible. Recommend giving greater jumps, but making gaps between walls longer (width, not height)
 	- add some kind of novel mechanic(s) so it isn't the same old boring canabalt rip-off:
+		- some kind of walking enemies to jump over/slap?
 		- perhaps a super-jump (could be represented as swinging up and climbing rope) - ropes could be pick-up-able (start with 1, can hold max 3)
 		- some kind of randomly postioned fence on some walls which the player has to jump over
 
 audio
 -----
 	- add non-annoying jump sound effect
+	- add some kind of death sound effect
 	- add volume toggle button (also triggered by M key)?
