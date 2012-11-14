@@ -5,6 +5,7 @@ Name and title screen stuff could (and should, I feel) be discussed on Wednesday
 misc
 ----
 	- somehow explain controls to player
+	- perhaps put our names on a credits screen
 	- make preloader automatically go to start screen on finish loading
 	- hide debug console when finished
 
@@ -12,11 +13,12 @@ graphics
 --------
 	- Ben: add scrolling background (different graphical elements with varying graphic.scrollX)
 	- Ben: make a little fern sprite
+	- maybe add dirt particles behind the player
 	
 gameplay
 --------
-	- Jack: add shadow to title screen and HUD text
-	- Jack: generally make title/death screen look neater (make press button message flash)
+	- Jack: add shadow (note to self: experiment with shadow alpha) to title screen and HUD text
+	- Jack: generally make title/death screen look neater (make "press space" message flash)
 	- Jack: devise and implement some gameplay element with aliens
 	- Jamie: add ferns which slightly slow down the player
 
