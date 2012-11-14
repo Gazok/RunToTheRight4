@@ -42,8 +42,6 @@ package
 			blitRect.width = width - 1;
 			nTiles = Math.ceil(width / centreBitmap.width);
 
-				FP.console.log(nTiles);
-
 			for(var i:int = 0; i < nTiles; ++i)
 			{
 				wallCanvas.draw(3 + i*centreBitmap.width,0,centreBitmap,blitRect); //Move across by graphic width

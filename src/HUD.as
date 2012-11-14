@@ -20,9 +20,9 @@ package
 		{
 			graphic = (Game.dead) ? deadText : ((Game.started) ? scoreText : startText);
 			
-			if (Game.dead) deadText.text = "YOU RAN " + String(Math.floor(Game.time * 100)) + "km\n\nYOU'RE REALLY\nGOOD AT RUNNING\nTO THE RIGHT\n\nPRESS SPACE";
+			if (Game.dead) deadText.text = "YOU RAN " + String(Math.floor(Game.score)) + "m\n\nYOU'RE REALLY\nGOOD AT RUNNING\nTO THE RIGHT\n\nPRESS SPACE";
 			
-			scoreText.text = String(Math.floor(Game.time * 100)) + "km";
+			scoreText.text = String(Math.floor(Game.score)) + "m";
 			scoreText.x = FP.width - (scoreText.width - 1);
 
 			FP.world.bringToFront(this);
