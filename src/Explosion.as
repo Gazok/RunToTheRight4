@@ -9,9 +9,11 @@ package
 	{
 		
 		private var spr:Spritemap = new Spritemap(A.gfxEXPLOSION, 15, 14);
+		private var theX:int
 		
-		public function Explosion(x:int,y:int) 
+		public function Explosion(inX:int,y:int) 
 		{
+			theX = inX;
 			spr.angle = 90 * Math.floor(Math.random() * 4);
 			spr.scaleX = 2;
 			spr.scaleY = 2;
@@ -25,7 +27,7 @@ package
 		
 		override public function update():void
 		{
-			x = FP.camera.x;
+			x = FP.camera.x + theX;
 			if (spr.index == 5)
 			{FP.world.remove(this);}
 		}
