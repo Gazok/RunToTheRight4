@@ -22,6 +22,10 @@ package
 		private var _walls:Array = new Array();
 		private var _player:Player;
 		private var _background:Entity;
+		private var _backgroundTwoA:Entity;
+		private var _backgroundTwoB:Entity;
+		private var _backgroundThreeA:Entity;
+		private var _backgroundThreeB:Entity;
 
 		public function Game() 
 		{	
@@ -29,6 +33,14 @@ package
 			dead = false;
 			
 			_background = addGraphic(new Image(A.gfxBACKGROUND));
+			_backgroundThreeA = addGraphic(new Image(A.gfxBACKGROUNDTHREE));
+			_backgroundThreeB = addGraphic(new Image(A.gfxBACKGROUNDTHREE));
+			_backgroundTwoA = addGraphic(new Image(A.gfxBACKGROUNDTWO));
+			_backgroundTwoB = addGraphic(new Image(A.gfxBACKGROUNDTWO));
+			_backgroundTwoA.x = 0;
+			_backgroundTwoB.x = 160;
+			_backgroundThreeA.x = 0;
+			_backgroundThreeB.x = 160;
 
 			_player = new Player(14, 31);
 			_walls.push(new Wall(-8, 40, 176, 20));
@@ -105,6 +117,10 @@ package
 				if (dead && Input.pressed(Key.SPACE)) Restart();
 			}
 			_background.x = FP.camera.x;
+			_backgroundTwoA.x = Math.round(FP.camera.x/320)*320;
+			_backgroundTwoB.x = FP.camera.x - ((FP.camera.x) % 320) + 160;
+			//_backgroundThreeA.x = make this follow the camera at half speed (simulate distance)
+			//_backgroundThreeB.x = make this follow the camera at half speed (simulate distance)
 		}
 
 		public function Restart():void
@@ -162,15 +178,16 @@ package
 			//const aX:Number = _player.acc.x;
 			const aY:Number = Game.gravity - _player.ease;
 
-			const maxY:Number = Math.pow(uY,2)/(2*aY);
-			const yDiff:Number = wallY - lWallY;
+-			const maxY:Number = Math.pow(uY,2)/(2*aY);
+-			const yDiff:Number = wallY - lWallY;
+-
+-			//const playerDistToWall:Number = wallGap - playerWidth;
 
-			//const playerDistToWall:Number = wallGap - playerWidth;
 
 			//Simple mechanics rendered nasty.
-			//const t:Number = 2*playerDistToWall/(Math.sqrt(Math.pow(uX,2)+2*aX*playerDistToWall) + uX);
+			//const t:Number = 2*playerDistToWall/(Math.sqrt(Math.pow(uX,2)+2*aX*(playerDistToWall)) + uX);
 
-			//const nY:Number = uY*t+0.5*(aY*Math.pow(t,2));
+			const nY:Number = uY*t+0.5*(aY*Math.pow(t,2));
 
 			if (yDiff > maxY)
 			{

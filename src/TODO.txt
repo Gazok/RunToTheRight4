@@ -11,9 +11,10 @@ misc
 
 graphics
 --------
-	- Ben: add scrolling background (different graphical elements with varying graphic.scrollX)
 	- Ben: make a little fern sprite, unless Jamie wants to
 	- maybe add dirt particles behind the player
+	- Make the _backgroundThree images follow the camera, but at a lower speed, to simulate distance
+		(This is at the bottom of Game's update() function)
 	
 gameplay
 --------
