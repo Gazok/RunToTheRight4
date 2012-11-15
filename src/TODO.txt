@@ -7,7 +7,6 @@ graphics
 	
 gameplay
 --------
-	- Jack: devise and implement some gameplay element with aliens
 
 audio
 -----

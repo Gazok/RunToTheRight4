@@ -19,6 +19,7 @@ package
 			spr.add("explode", [0, 1, 2, 3, 4, 5], 12, false);
 			spr.play("explode");
 			graphic = spr;
+			layer = A.lyrEXPLOSION;
 		}
 		
 		override public function update():void

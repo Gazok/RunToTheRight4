@@ -13,6 +13,7 @@ package
 		private static const centreBitmap:BitmapData = new A.gfxWALLMIDDLE().bitmapData; //Unnnngggh
 		
 		private var ferns:int = FP.rand(3);
+		private var alien:Boolean = (FP.random < 0.1);
 		
 		public function Wall(x:int, y:int, w:int, h:int) 
 		{
@@ -25,7 +26,9 @@ package
 			graphic = GenerateGraphic();
 			originX = -3;
 			
-			for (var i:int = 0; i < ferns; i ++) FP.world.add(new Fern(x + FP.rand(w - 7) + 4, y - 4)); // x randomly between 4 and width - 4
+			for (var i:int = 0; i < ferns; i ++) FP.world.add(new Fern(x + FP.rand(w - 11) + 4, y - 4)); // x randomly between 4 and width - 8
+			
+			if (alien && w > 35) FP.world.add(new Alien(x + FP.rand(w - 31) + 4, -13));
 		}
 
 		override public function removed():void

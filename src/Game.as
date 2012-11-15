@@ -20,7 +20,9 @@ package
 		public static const friction:Number = 2;
 		public static const gravity:Number = 0.2;
 		
-		private var dieSnd:Sfx = new Sfx(A.sndDIE);
+		public static var dieSnd:Sfx = new Sfx(A.sndDIE);
+		
+		private var resumeTimer:int = 0;
 
 		private var _walls:Array = new Array();
 		private var _player:Player;
@@ -60,6 +62,7 @@ package
 			add(_player);
 			add(_walls[0]);
 			add(new HUD);
+			add(new cameraShake);
 
 			TrackPlayer();
 			if (!bgMusic.playing) bgMusic.loop();
@@ -130,7 +133,7 @@ package
 
 				TrackPlayer();
 
-				if(_player.y >= FP.height && !Game.dead)
+				if(_player.y >= FP.height && !dead)
 				{
 					dieSnd.play();
 					_player.vel.x = 0;
@@ -138,7 +141,9 @@ package
 					HUD.die();
 				}
 				
-				if (dead && Input.pressed(Key.SPACE)) Restart();
+				if (dead && resumeTimer <= 20) resumeTimer ++;
+				
+				if (dead && Input.pressed(Key.SPACE) && resumeTimer > 20) Restart();
 			}
 			_background.x = FP.camera.x;
 		}

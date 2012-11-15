@@ -33,7 +33,6 @@ package
 			}
 			if (t > 120 && a.text == "BENJAMIN WELLS")
 			{
-				s.play();
 				FP.world = new Game;
 			}
 			a.x = (FP.width - a.width) / 2;

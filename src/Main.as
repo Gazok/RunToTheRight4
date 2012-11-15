@@ -15,7 +15,7 @@ package
 			FP.world = new Intro;
 			FP.screen.color = 0;
 			FP.screen.scale = 10;
-			FP.console.enable(); 
+			//FP.console.enable(); 
 		}
 		
 	}

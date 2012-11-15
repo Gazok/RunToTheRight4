@@ -21,7 +21,7 @@ package
 		
 		override public function update():void
 		{
-			if (x < width) FP.world.remove(this);
+			if (x < FP.camera.x - width) FP.world.remove(this);
 		}
 		
 	}

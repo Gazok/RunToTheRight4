@@ -23,6 +23,8 @@ package
 
 		public function HUD() 
 		{
+			layer = A.lyrHUD;
+			
 			// populate graphiclist with text
 			for (var i:int = 0; i < startText.length; i ++) startTextList.add(startText[i]);
 

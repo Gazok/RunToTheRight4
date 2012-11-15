@@ -92,7 +92,15 @@ package
 					//Move the player 1 pixel at a time
 					for (var i:int = 0; i < Math.abs(_toMove.x); i ++)
 					{
-						if (!collide(A.typWALL, x + FP.sign(_toMove.x), y))
+						if (collide(A.typALIEN, x + FP.sign(_toMove.x), y))
+						{
+							Game.dieSnd.play();
+							vel.x = 0;
+							spr.visible = false;
+							Game.dead = true;
+							HUD.die();
+						}
+						else if (!collide(A.typWALL, x + FP.sign(_toMove.x), y))
 						{
 							x += FP.sign(_toMove.x);
 							Game.score++;
