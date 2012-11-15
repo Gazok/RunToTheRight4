@@ -3,20 +3,25 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import flash.display.BitmapData;
+	import net.flashpunk.FP;
 	
 	public class Fern extends Entity 
 	{
-		private var a:Image = new Image(new BitmapData(4, 4, false, 0));
 		
 		public function Fern(x:int, y:int) 
 		{
 			this.x = x;
 			this.y = y;
 			
-			graphic = a;
+			graphic = new Image(A.gfxFERN);
 			
 			setHitbox(4, 4);
 			type = A.typFERN;
+		}
+		
+		override public function update():void
+		{
+			if (x < width) FP.world.remove(this);
 		}
 		
 	}

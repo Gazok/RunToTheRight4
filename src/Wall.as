@@ -26,10 +26,10 @@ package
 			graphic = GenerateGraphic();
 			originX = -3;
 			
-			//for (var i:int = 0; i <= ferns; i ++)
-			//{
-			//	FP.world.add(new Fern(FP.rand(w - 7) + 4, y - 4)); // randomly between 4 and width - 4
-			//}
+			for (var i:int = 0; i < ferns; i ++)
+			{
+				FP.world.add(new Fern(x + FP.rand(w - 7) + 4, y - 4)); // randomly between 4 and width - 4
+			}
 		}
 
 		override public function removed():void

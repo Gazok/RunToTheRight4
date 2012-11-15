@@ -77,7 +77,12 @@ package
 					_acc.y += _ease; //A bit generous
 				}
 				
-				_vel.x += _acc.x;
+				if (collide(A.typFERN, x, y))
+				{
+					_vel.x -= 10 * _acc.x;
+					if (_vel.x < 0.1) _vel.x = 0.1;
+				}
+				else _vel.x += _acc.x;
 				_vel.y += _acc.y;
 				_toMove.x += _vel.x;
 				_toMove.y += _vel.y;

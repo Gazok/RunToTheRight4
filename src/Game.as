@@ -1,14 +1,13 @@
 package  
 {
 	import net.flashpunk.Entity;
-	import net.flashpunk.Graphic;
+	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Backdrop;
 	import net.flashpunk.graphics.Image;
-	import net.flashpunk.World;
-	import net.flashpunk.FP;
+	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
-	import net.flashpunk.Sfx;
+	import net.flashpunk.World;
 	
 	public class Game extends World 
 	{

@@ -12,6 +12,7 @@ package
 		[Embed(source = "../assets/graphics/background.png")] static public const gfxBACKGROUND:Class;
 		[Embed(source = "../assets/graphics/background2.png")] static public const gfxBACKGROUNDTWO:Class;
 		[Embed(source = "../assets/graphics/background3.png")] static public const gfxBACKGROUNDTHREE:Class;
+		[Embed(source = "../assets/graphics/fern.png")] static public const gfxFERN:Class;
 
 		// audio
 		[Embed(source = '../assets/sound/music.mp3')] static public const sndBGMUSIC:Class;
