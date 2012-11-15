@@ -97,19 +97,15 @@ package
 		public static function die():void
 		{
 			// reset flashing text
-			ft[0].alpha = 0;
-			t = 0;
-			
-			// reset death text widths to stop centring messing up // doesn't work ;~;
-			for (var i:int = 0; i < 3; i ++) deadText[i].width = 0;
+			ft[0].alpha = t = 0;
 
 			// decide death text
-			deadText[0].text = "YOU RAN " + String(score) + "m";
-			deadText[1].text = (score < 1000) ? "YOU SUCK" : ((score < 3000) ? "YOU'RE PRETTY" : ((score < 5000) ? "YOU'RE REALLY" : "YOU'RE AMAZING"));
-			deadText[2].text = (score < 1000 || score >= 5000) ? "AT RUNNING" : "GOOD AT RUNNING";
+			deadText[0] = new Text("YOU RAN " + String(score) + "m", 0, 4, { size: 8, color: 0xE6E4D5, resizable: true } );
+			deadText[1] = new Text((score < 1000) ? "YOU SUCK" : ((score < 3000) ? "YOU'RE PRETTY" : ((score < 5000) ? "YOU'RE REALLY" : "YOU'RE AMAZING")), 0, 16, { size: 8, color: 0xE6E4D5, resizable: true } );
+			deadText[2] = new Text((score < 1000 || score >= 5000) ? "AT RUNNING" : "GOOD AT RUNNING", 0, 25, { size: 8, color: 0xE6E4D5, resizable: true } );
 
 			// populate graphiclist with text
-			for (i = 0; i < deadText.length; i ++) deadTextList.add(deadText[i]);
+			for (var i:int = 0; i < deadText.length; i ++) deadTextList.add(deadText[i]);
 
 			// centre death text
 			for (i = 0; i < deadText.length; i ++) deadText[i].x = (FP.width - deadText[i].width) / 2;

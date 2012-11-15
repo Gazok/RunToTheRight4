@@ -7,8 +7,7 @@ graphics
 	
 gameplay
 --------
-	- Jack: fix death text centring
-	- Jack: devise and implement some gameplay element with aliensr
+	- Jack: devise and implement some gameplay element with aliens
 
 audio
 -----
