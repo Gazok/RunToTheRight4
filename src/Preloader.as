@@ -10,10 +10,9 @@ package
 	
 	public class Preloader extends Sprite
 	{
-		// COMMENTED OUT BGIMAGE BECAUSE IT HASN'T BEEN PUSHED TO GIT
-		private static const mustClick:Boolean = true;
+		private static const mustClick:Boolean = false;
 		private static const mainClassName:String = "Main";
-		private static const BG_COLOR:uint = 0x909090, FG_COLOR:uint = 0x4E5159;
+		private static const BG_COLOR:uint = 0x000000, FG_COLOR:uint = 0xE6E4D5;
 		[Embed(source = 'net/flashpunk/graphics/04B_03__.TTF', embedAsCFF="false", fontFamily = 'default')] private static const FONT:Class;
 		//[Embed(source = '../assets/graphics/LoaderBG.png')] private static const BGIMAGE:Class;
 		
@@ -32,7 +31,7 @@ package
 			px = (sw - w) * 0.5;
 			py = (sh - h) * 0.5;
 			
-			//graphics.beginBitmapFill(bmpd,matrix,false);
+			graphics.beginFill(BG_COLOR);
 			graphics.drawRect(0, 0, sw, sh);
 			graphics.endFill();
 			
@@ -63,7 +62,7 @@ package
 			if (hasLoaded())
 			{
 				graphics.clear();
-				//graphics.beginBitmapFill(bmpd,matrix,false);
+				graphics.beginFill(BG_COLOR);
 				graphics.drawRect(0, 0, sw, sh);
 				graphics.endFill();
 				

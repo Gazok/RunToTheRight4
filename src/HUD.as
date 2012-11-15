@@ -76,7 +76,7 @@ package
 			// populate graphiclist with text
 			scoreTextList.add(scoreText);
 
-			// centre start text
+			// right-align start text
 			scoreText.x = FP.width - (scoreText.width - 1);
 
 			// empty graphiclist

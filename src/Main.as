@@ -12,8 +12,8 @@ package
 		
 		override public function init():void 
 		{
-			FP.world = new Game;
-			FP.screen.color = 0x909090;
+			FP.world = new Intro;
+			FP.screen.color = 0;
 			FP.screen.scale = 10;
 			FP.console.enable(); 
 		}

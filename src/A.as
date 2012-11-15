@@ -19,6 +19,7 @@ package
 
 		// collision types
 		static public const typWALL:String = "wall";
+		static public const typFERN:String = "fern";
 
 		// graphic layers
 		// static public const lyrDEPTH:int = depth;

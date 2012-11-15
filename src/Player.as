@@ -4,9 +4,9 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Spritemap;
+	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
-	import net.flashpunk.Sfx;
 
 	public class Player extends Entity 
 	{
@@ -60,23 +60,23 @@ package
 		
 		override public function update():void
 		{
-			/*if (Input.check("left")) _vel.x = 0
-			if (Input.check("right")) _vel.x = 4;*/ //Could make left stop player, right speed up. Need camera manip.
-			
-			_acc.y = Game.gravity;
-			if (Input.pressed("jump") && collide(A.typWALL, x, y + 1))
-			{
-				_acc.y += _jump;
-				jumpSnd.play();
-			}
-			else if (Input.check("jump"))// && _vel.y < 0)
-			{
-				_acc.y += _ease; //A bit generous
-			}
-			
 			//Increase speed
 			if (Game.started) 
 			{
+				/*if (Input.check("left")) _vel.x = 0
+				if (Input.check("right")) _vel.x = 4;*/ //Could make left stop player, right speed up. Need camera manip.
+				
+				_acc.y = Game.gravity;
+				if (Input.pressed("jump") && collide(A.typWALL, x, y + 1))
+				{
+					_acc.y += _jump;
+					jumpSnd.play();
+				}
+				else if (Input.check("jump"))// && _vel.y < 0)
+				{
+					_acc.y += _ease; //A bit generous
+				}
+				
 				_vel.x += _acc.x;
 				_vel.y += _acc.y;
 				_toMove.x += _vel.x;

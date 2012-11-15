@@ -13,6 +13,8 @@ package
 		private static const rightBitmap:BitmapData = new A.gfxWALLRIGHT().bitmapData; //Unnnngggh
 		private static const centreBitmap:BitmapData = new A.gfxWALLMIDDLE().bitmapData; //Unnnngggh
 		
+		private var ferns:int = FP.rand(3);
+		
 		public function Wall(x:int, y:int, w:int, h:int) 
 		{
 			this.x = x;
@@ -23,6 +25,11 @@ package
 			
 			graphic = GenerateGraphic();
 			originX = -3;
+			
+			//for (var i:int = 0; i <= ferns; i ++)
+			//{
+			//	FP.world.add(new Fern(FP.rand(w - 7) + 4, y - 4)); // randomly between 4 and width - 4
+			//}
 		}
 
 		override public function removed():void
