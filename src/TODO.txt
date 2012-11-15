@@ -7,10 +7,9 @@ graphics
 	
 gameplay
 --------
-	- Jack: make "press space" message flash on start/death screens
+	- Jack: fix death text centring
 	- Jack: devise and implement some gameplay element with aliensr
 
 audio
 -----
-	- Ben: add some kind of death sound effect
 	- Jack: add volume toggle button (also triggered by M key)?

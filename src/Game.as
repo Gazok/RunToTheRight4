@@ -18,6 +18,8 @@ package
 		
 		public static const friction:Number = 2;
 		public static const gravity:Number = 0.2;
+		
+		private var dieSnd:Sfx = new Sfx(A.sndDIE);
 
 		private var _walls:Array = new Array();
 		private var _player:Player;
@@ -105,8 +107,9 @@ package
 
 				TrackPlayer();
 
-				if(_player.y >= FP.height)
+				if(_player.y >= FP.height && !Game.dead)
 				{
+					dieSnd.play();
 					_player.vel.x = 0;
 					dead = true;
 					HUD.die();

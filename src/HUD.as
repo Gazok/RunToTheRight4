@@ -8,7 +8,7 @@ package
 	public class HUD extends Entity 
 	{
 		public static var ft:Array = [];
-		private var t:int = 0;
+		public static var t:int = 0;
 
 		private var scoreText:Text = new Text("", 0, -1, { size: 8, color: 0xE6E4D5 } );
 		private var scoreTextList:Graphiclist = new Graphiclist;
@@ -96,7 +96,11 @@ package
 
 		public static function die():void
 		{
-			// reset death text widths to stop centring messing up
+			// reset flashing text
+			ft[0].alpha = 0;
+			t = 0;
+			
+			// reset death text widths to stop centring messing up // doesn't work ;~;
 			for (var i:int = 0; i < 3; i ++) deadText[i].width = 0;
 
 			// decide death text
@@ -107,7 +111,7 @@ package
 			// populate graphiclist with text
 			for (i = 0; i < deadText.length; i ++) deadTextList.add(deadText[i]);
 
-			// centre start text
+			// centre death text
 			for (i = 0; i < deadText.length; i ++) deadText[i].x = (FP.width - deadText[i].width) / 2;
 
 			// empty graphiclist
