@@ -12,4 +12,3 @@ gameplay
 
 audio
 -----
-	- Jack: add volume toggle button (also triggered by M key)?

@@ -17,5 +17,7 @@ package
 			FP.screen.scale = 10;
 			FP.console.enable(); 
 		}
+		
 	}
+	
 }

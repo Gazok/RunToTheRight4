@@ -4,6 +4,7 @@ package
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Backdrop;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
@@ -26,21 +27,32 @@ package
 		private var _background:Entity;
 		private var _backgroundTwo:Entity;
 		private var _backgroundThree:Entity;
+		private var mutebutton:Entity;
 		
 		private var b2:Backdrop = new Backdrop(A.gfxBACKGROUNDTWO);
 		private var b3:Backdrop = new Backdrop(A.gfxBACKGROUNDTHREE);
+		private var mb:Spritemap = new Spritemap(A.gfxMUTEBUTTON, 7, 6);
 
 		public function Game() 
 		{	
 			score = 0;
 			dead = false;
 			
+			if (!started)
+			{
+				mutebutton = addGraphic(mb);
+				mutebutton.x = FP.width - 8;
+				mutebutton.y = 1;
+				mutebutton.type = A.typMUTEBUTTON;
+				mutebutton.setHitbox(7, 6);
+				mutebutton.layer = A.lyrMUTEBUTTON;
+			}
+			
 			_background = addGraphic(new Image(A.gfxBACKGROUND));
 			_backgroundThree = addGraphic(b3);
 			_backgroundTwo = addGraphic(b2);
 			b2.scrollX = 0.5;
 			b3.scrollX = 0.25;
-			
 
 			_player = new Player(14, 31);
 			_walls.push(new Wall(-8, 40, 176, 20));
@@ -58,10 +70,21 @@ package
 		{
 			super.update();
 			
+			if (Input.pressed(Key.M)) FP.volume = Number(!Boolean(FP.volume));
+			
 			if (!started)
 			{
+				if (collidePoint(A.typMUTEBUTTON, Input.mouseX, Input.mouseY))
+				{
+					Input.mouseCursor = "button";
+					if (Input.mousePressed) FP.volume = Number(!Boolean(FP.volume));
+				}
+				else Input.mouseCursor = "auto";
+				mb.setFrame(Number(!Boolean(FP.volume)), 0);
+				
 				if (Input.pressed(Key.SPACE))
 				{
+					FP.world.remove(mutebutton);
 					started = true;
 					_player.spr.play("run");
 				}

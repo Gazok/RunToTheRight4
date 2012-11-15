@@ -13,6 +13,7 @@ package
 		[Embed(source = "../assets/graphics/background2.png")] static public const gfxBACKGROUNDTWO:Class;
 		[Embed(source = "../assets/graphics/background3.png")] static public const gfxBACKGROUNDTHREE:Class;
 		[Embed(source = "../assets/graphics/fern.png")] static public const gfxFERN:Class;
+		[Embed(source = "../assets/graphics/mutebutton.png")] static public const gfxMUTEBUTTON:Class;
 
 		// audio
 		[Embed(source = '../assets/sound/music.mp3')] static public const sndBGMUSIC:Class;
@@ -22,9 +23,10 @@ package
 		// collision types
 		static public const typWALL:String = "wall";
 		static public const typFERN:String = "fern";
+		static public const typMUTEBUTTON:String = "mb";
 
 		// graphic layers
-		// static public const lyrDEPTH:int = depth;
+		static public const lyrMUTEBUTTON:int = -5;
 
 		// fonts
 		// [Embed(source = '../assets/misc/font.ttf', fontName = 'fntFONT', embedAsCFF='false', fontFamily = 'default')] private const F1:Class;
