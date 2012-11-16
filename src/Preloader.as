@@ -4,7 +4,6 @@ package
 	import flash.text.*;
 	import flash.events.*;
 	import flash.utils.getDefinitionByName;
-	import flash.geom.Matrix;
 
 	[SWF(width = "800", height = "600")]
 	
@@ -14,10 +13,7 @@ package
 		private static const mainClassName:String = "Main";
 		private static const BG_COLOR:uint = 0x000000, FG_COLOR:uint = 0xE6E4D5;
 		[Embed(source = 'net/flashpunk/graphics/04B_03__.TTF', embedAsCFF="false", fontFamily = 'default')] private static const FONT:Class;
-		//[Embed(source = '../assets/graphics/LoaderBG.png')] private static const BGIMAGE:Class;
 		
-		private var matrix:Matrix = new Matrix();
-		private var bmpd:BitmapData;
 		private var pb:Shape, t:TextField, px:int, py:int, w:int, h:int = 20, sw:int, sh:int;
 		
 		public function Preloader()
@@ -25,9 +21,7 @@ package
 			sw = stage.stageWidth;
 			sh = stage.stageHeight;
 			w = stage.stageWidth * 0.8;
-			//bmpd = new BGIMAGE().bitmapData;
-			matrix.scale(10,10);
-
+			
 			px = (sw - w) * 0.5;
 			py = (sh - h) * 0.5;
 			
@@ -79,7 +73,7 @@ package
 				var p:Number = (loaderInfo.bytesLoaded / loaderInfo.bytesTotal);
 				
 				pb.graphics.clear();
-				pb.graphics.beginBitmapFill(bmpd,matrix,false);
+				pb.graphics.beginFill(BG_COLOR);
 				pb.graphics.drawRect(px, py, p * w, h);
 				pb.graphics.endFill();
 				
