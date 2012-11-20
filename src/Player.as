@@ -15,7 +15,6 @@ package
 		private var _acc:Point = new Point(0.005, 0);
 		private const _jump:Number = -2.5;
 		private const _ease:Number = -0.5*Game.gravity;
-		//private var maxspeed:Number = 0.5;
 		
 		private var jumpSnd:Sfx = new Sfx(A.sndJUMP);
 		
@@ -56,6 +55,7 @@ package
 			
 			setHitbox(4, 9);
 			type = "player";
+			layer = A.lyrPLAYER;
 		}
 		
 		override public function update():void
@@ -63,9 +63,6 @@ package
 			//Increase speed
 			if (Game.started) 
 			{
-				/*if (Input.check("left")) _vel.x = 0
-				if (Input.check("right")) _vel.x = 4;*/ //Could make left stop player, right speed up. Need camera manip.
-				
 				_acc.y = Game.gravity;
 				if (Input.pressed("jump") && collide(A.typWALL, x, y + 1))
 				{

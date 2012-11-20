@@ -30,6 +30,7 @@ package
 
 		// graphic layers
 		static public const lyrMUTEBUTTON:int = -5;
+		static public const lyrPLAYER:int = -9;
 		static public const lyrALIEN:int = -10;
 		static public const lyrEXPLOSION:int = -15;
 		static public const lyrHUD:int = -20;
